@@ -168,6 +168,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.4" data-path="../http/error.html">
+            
+                <a href="../http/error.html">
+            
+                    
+                    1.1.4.错误
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -320,77 +333,6 @@
             
 
             
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.5.1" data-path="../middleware/trace.html">
-            
-                <a href="../middleware/trace.html">
-            
-                    
-                    1.3.1.全局唯一ID
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.2" data-path="../middleware/request_log.html">
-            
-                <a href="../middleware/request_log.html">
-            
-                    
-                    1.3.2.请求日志
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.3" data-path="../middleware/cors.html">
-            
-                <a href="../middleware/cors.html">
-            
-                    
-                    1.3.3.跨域
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.4" data-path="../middleware/jwt.html">
-            
-                <a href="../middleware/jwt.html">
-            
-                    
-                    1.3.4.JWT
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.5" data-path="../middleware/recover.html">
-            
-                <a href="../middleware/recover.html">
-            
-                    
-                    1.3.5.Recover
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
         </li>
     
         <li class="chapter " data-level="1.6" data-path="../util.html">
@@ -403,90 +345,6 @@
                 </a>
             
 
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.1" data-path="../util/array.html">
-            
-                <a href="../util/array.html">
-            
-                    
-                    1.4.1.数组
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.2" data-path="../util/date.html">
-            
-                <a href="../util/date.html">
-            
-                    
-                    1.4.2.时间
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3" data-path="../util/security.html">
-            
-                <a href="../util/security.html">
-            
-                    
-                    1.4.3.加密/解密
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.4" data-path="../util/json.html">
-            
-                <a href="../util/json.html">
-            
-                    
-                    1.4.4.Json
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.5" data-path="string.html">
-            
-                <a href="string.html">
-            
-                    
-                    1.4.5.字符串
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.6" data-path="number.html">
-            
-                <a href="number.html">
-            
-                    
-                    1.4.6.数字
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
             
         </li>
     
@@ -535,7 +393,198 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="121&#x6570;&#x636E;&#x5E93;">1.2.1.&#x6570;&#x636E;&#x5E93;</h1>
+                                <h1 id="&#x8BF4;&#x660E;">&#x8BF4;&#x660E;</h1>
+<p>&#x6570;&#x636E;&#x5E93;&#x7EC4;&#x4EF6;&#x662F;&#x57FA;&#x4E8E;<code>gorm</code>&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x73B0;&#x5DF2;&#x5347;&#x7EA7;&#x5230;2.0&#x7248;&#x672C;&#xFF0C;&#x652F;&#x6301;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#x4E0E;&#x591A;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x3002;</p>
+<h2 id="&#x914D;&#x7F6E;&#x9879;">&#x914D;&#x7F6E;&#x9879;</h2>
+<ul>
+<li><p>&#x793A;&#x4F8B;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">mysql:</span>    <span class="hljs-comment"># mysql&#x914D;&#x7F6E;&#x3002;&#x652F;&#x6301;&#x591A;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x8BFB;&#x5199;&#x5206;&#x79BB;</span>
+<span class="hljs-attr">maxIdleConnections:</span> <span class="hljs-number">10</span>  <span class="hljs-comment"># &#x6700;&#x5927;&#x7A7A;&#x95F2;&#x8FDE;&#x63A5;&#x6570;</span>
+<span class="hljs-attr">maxOpenConnections:</span> <span class="hljs-number">40</span>  <span class="hljs-comment"># &#x6700;&#x5927;&#x6253;&#x5F00;&#x8FDE;&#x63A5;&#x6570;</span>
+<span class="hljs-attr">maxLifeTime:</span> <span class="hljs-number">8</span>          <span class="hljs-comment"># &#x8D85;&#x65F6;&#x65F6;&#x95F4;</span>
+<span class="hljs-attr">dsn:</span> root:<span class="hljs-number">123456</span>@tcp(<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">3306</span>)/demo?charset=utf8mb4   <span class="hljs-comment"># &#x4E3B;&#x8FDE;&#x63A5;</span>
+<span class="hljs-attr">other:</span>    <span class="hljs-comment"># &#x53E6;&#x5916;&#x7684;&#x5E93;&#x8FDE;&#x63A5;</span>
+<span class="hljs-attr">  sources:</span>    <span class="hljs-comment"># &#x4E3B;&#x5E93;</span>
+<span class="hljs-attr">    - root:</span><span class="hljs-number">123456</span>@tcp(<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">3307</span>)/other?charset=utf8mb4
+<span class="hljs-attr">  replicas:</span>   <span class="hljs-comment"># &#x4ECE;&#x5E93;</span>
+<span class="hljs-attr">    - root:</span><span class="hljs-number">123456</span>@tcp(<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">3308</span>)/other?charset=utf8mb4
+<span class="hljs-attr">  tables:</span>
+<span class="hljs-bullet">    -</span> orders  <span class="hljs-comment"># gorm&#x4F1A;&#x6839;&#x636E;&#x8868;&#x81EA;&#x52A8;&#x5207;&#x6362;&#x8FDE;&#x63A5;&#xFF0C;&#x53CA;&#x5176;&#x65B9;&#x4FBF;</span>
+</code></pre>
+</li>
+<li><p>&#x8BF4;&#x660E;</p>
+<ul>
+<li>maxIdleConnections: &#x8FDE;&#x63A5;&#x6C60;&#x7684;&#x6700;&#x5927;&#x7A7A;&#x95F2;&#x6570;</li>
+<li>maxOpenConnections: &#x8FDE;&#x63A5;&#x6C60;&#x7684;&#x6700;&#x5927;&#x6253;&#x5F00;&#x8FDE;&#x63A5;&#x6570;</li>
+<li>maxLifeTime: &#x8D85;&#x65F6;&#x65F6;&#x95F4;</li>
+<li>dsn: &#x6570;&#x636E;&#x5E93;&#x76F8;&#x5173;&#x914D;&#x7F6E;</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x521D;&#x59CB;&#x5316;">&#x521D;&#x59CB;&#x5316;</h2>
+<p>&#x4E00;&#x822C;&#x52A0;&#x8F7D;&#x6570;&#x636E;&#x5E93;&#x662F;&#x5728;main.go&#x91CC;&#x7684;init&#x51FD;&#x6570;&#xFF0C;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;&#x653E;&#x5728;&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#x9879;&#x6210;&#x529F;&#x540E;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;github.com/ebar-go/ego/app&quot;</span>
+    <span class="hljs-string">&quot;github.com/ebar-go/ego/component/mysql&quot;</span>
+    <span class="hljs-string">&quot;github.com/ebar-go/egu&quot;</span>
+)
+<span class="hljs-keyword">func</span> init()  {
+    <span class="hljs-comment">// &#x52A0;&#x8F7D;&#x914D;&#x7F6E;</span>
+    egu.SecurePanic(app.Config().LoadFile(<span class="hljs-string">&quot;app.yaml&quot;</span>))
+
+    <span class="hljs-comment">// &#x521D;&#x59CB;&#x5316;&#x6570;&#x636E;&#x5E93;</span>
+    egu.SecurePanic(app.InitDB())
+
+    <span class="hljs-comment">// &#x53EF;&#x9009;&#xFF0C;&#x4F7F;&#x7528;&#x96C6;&#x7FA4;&#x548C;&#x591A;&#x8FDE;&#x63A5;&#x914D;&#x7F6E;</span>
+    egu.SecurePanic(app.DB().Use(mysql.Resolver().Register(mysql.ResolverConfig(mysql.ResolverItem{
+        Sources:  app.Config().GetStringSlice(<span class="hljs-string">&quot;mysql.other.sources&quot;</span>),
+        Replicas: app.Config().GetStringSlice(<span class="hljs-string">&quot;mysql.other.replicas&quot;</span>),
+        Tables:   app.Config().GetStringSlice(<span class="hljs-string">&quot;mysql.other.tables&quot;</span>),
+    }))))
+}
+</code></pre>
+<h2 id="&#x8868;&#x7ED3;&#x6784;">&#x8868;&#x7ED3;&#x6784;</h2>
+<pre><code class="lang-sql"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span> <span class="hljs-keyword">users</span>;
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">users</span> (
+    <span class="hljs-keyword">id</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> primary <span class="hljs-keyword">key</span> auto_increment <span class="hljs-keyword">comment</span> <span class="hljs-string">&apos;&#x4E3B;&#x952E;&apos;</span>,
+    email <span class="hljs-built_in">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">default</span> <span class="hljs-string">&apos;&apos;</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">&apos;&#x90AE;&#x7BB1;&apos;</span>,
+    <span class="hljs-keyword">password</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">32</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">default</span> <span class="hljs-string">&apos;&apos;</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">&apos;&#x5BC6;&#x7801;&apos;</span>,
+    is_del tinyint <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">default</span> <span class="hljs-number">0</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">&apos;&#x662F;&#x5426;&#x5220;&#x9664;&apos;</span>,
+    created_at <span class="hljs-built_in">int</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">default</span> <span class="hljs-number">0</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">&apos;&#x521B;&#x5EFA;&#x65F6;&#x95F4;&apos;</span>,
+    updated_at <span class="hljs-built_in">int</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">default</span> <span class="hljs-number">0</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">&apos;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&apos;</span>,
+    <span class="hljs-keyword">key</span> <span class="hljs-string">`idx_is_del`</span>(<span class="hljs-string">`is_del`</span>),
+    <span class="hljs-keyword">key</span> <span class="hljs-string">`idx_updated_at`</span>(<span class="hljs-string">`updated_at`</span>)
+)<span class="hljs-keyword">charset</span>=utf8mb4 <span class="hljs-keyword">comment</span>=<span class="hljs-string">&apos;&#x7528;&#x6237;&#x4FE1;&#x606F;&apos;</span>;
+</code></pre>
+<h2 id="&#x5B9A;&#x4E49;&#x5B9E;&#x4F53;">&#x5B9A;&#x4E49;&#x5B9E;&#x4F53;</h2>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> entity
+
+
+<span class="hljs-keyword">const</span> (
+    TableUser = <span class="hljs-string">&quot;users&quot;</span> <span class="hljs-comment">// &#x8868;&#x540D;</span>
+&#xFF09;
+<span class="hljs-comment">// &#x7528;&#x6237;&#x5B9E;&#x4F53;</span>
+<span class="hljs-keyword">type</span> UserEntity <span class="hljs-keyword">struct</span> {
+    mysql.BaseEntity
+    Email <span class="hljs-keyword">string</span> <span class="hljs-string">`json:&quot;email&quot; gorm:&quot;column:email&quot;`</span>
+    Password <span class="hljs-keyword">string</span> <span class="hljs-string">`json:&quot;-&quot; gorm:&quot;column:password&quot;`</span>
+}
+
+<span class="hljs-comment">// TableName &#x6307;&#x5B9A;&#x6A21;&#x578B;&#x7684;&#x8868;&#x540D;&#x79F0;</span>
+<span class="hljs-keyword">func</span> (UserEntity) TableName() <span class="hljs-keyword">string</span> {
+    <span class="hljs-keyword">return</span> TableUser
+}
+</code></pre>
+<h2 id="&#x5B9A;&#x4E49;dao">&#x5B9A;&#x4E49;Dao</h2>
+<ul>
+<li><p>BaseDao.go</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> dao
+<span class="hljs-keyword">import</span>(...)
+<span class="hljs-keyword">const</span> SoftDeleteCondition = <span class="hljs-string">&quot;is_del = 0&quot;</span> <span class="hljs-comment">// &#x8F6F;&#x5220;&#x9664;&#x6761;&#x4EF6;</span>
+<span class="hljs-comment">// &#x57FA;&#x7840;dao</span>
+<span class="hljs-keyword">type</span> BaseDao <span class="hljs-keyword">struct</span> {
+  db *gorm.DB
+}
+<span class="hljs-comment">// Create &#x521B;&#x5EFA;</span>
+<span class="hljs-keyword">func</span> (dao *BaseDao) Create(entity <span class="hljs-keyword">interface</span>{}) error {
+  <span class="hljs-keyword">return</span> dao.db.Create(entity).Error
+}
+<span class="hljs-comment">// Update &#x66F4;&#x65B0;</span>
+<span class="hljs-keyword">func</span> (dao *BaseDao) Update(entity <span class="hljs-keyword">interface</span>{}) error {
+  <span class="hljs-keyword">return</span> dao.db.Save(entity).Error
+}
+<span class="hljs-comment">// Delete &#x5220;&#x9664;</span>
+<span class="hljs-keyword">func</span> (dao *BaseDao) Delete(entity <span class="hljs-keyword">interface</span>{}) error {
+  <span class="hljs-keyword">return</span> dao.db.Model(entity).UpdateColumns(mysql.Columns{
+      <span class="hljs-string">&quot;is_del&quot;</span>: <span class="hljs-number">1</span>,
+  }).Error
+}
+</code></pre>
+</li>
+<li><p>UserDao.go</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> dao
+<span class="hljs-keyword">import</span>(...)
+<span class="hljs-keyword">type</span> userDao <span class="hljs-keyword">struct</span> {
+  BaseDao
+}
+<span class="hljs-keyword">func</span> User(db *gorm.DB) *userDao {
+  <span class="hljs-keyword">return</span> &amp;userDao{BaseDao{
+      db: db,
+  }}
+}
+<span class="hljs-comment">// GetByUsername &#x6839;&#x636E;&#x7528;&#x6237;&#x540D;&#x83B7;&#x53D6;&#x8BB0;&#x5F55;</span>
+<span class="hljs-keyword">func</span> (dao *userDao) GetByEmail(email <span class="hljs-keyword">string</span>) (*entity.UserEntity, error) {
+  query := dao.Table(entity.TableUser).
+      Where(<span class="hljs-string">&quot;email = ?&quot;</span>, email)
+  user := <span class="hljs-built_in">new</span>(entity.UserEntity)
+  <span class="hljs-keyword">if</span> err := query.First(user).Error; err != <span class="hljs-literal">nil</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+  }
+  <span class="hljs-keyword">return</span> user, <span class="hljs-literal">nil</span>
+}
+<span class="hljs-comment">// &#x5206;&#x9875;&#x67E5;&#x8BE2;</span>
+<span class="hljs-keyword">func</span> (dao *userDao) PaginateQuery(request request.UserQueryRequest) ([]entity.UserEntity, *paginate.Pagination, error) {
+  query := dao.db.Table(entity.TableUser).Where(SoftDeleteCondition).Order(<span class="hljs-string">&quot;id desc&quot;</span>)
+  <span class="hljs-keyword">var</span> totalCount <span class="hljs-keyword">int</span>
+  <span class="hljs-keyword">if</span> err := query.Count(&amp;totalCount).Error; err != <span class="hljs-literal">nil</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>, err
+  }
+  pagination := paginate.Paginate(totalCount, request.CurrentPage, request.PageSize)
+  items := <span class="hljs-built_in">make</span>([]entity.UserEntity, <span class="hljs-number">0</span>)
+  <span class="hljs-keyword">if</span> err := query.Offset(pagination.GetOffset()).Limit(pagination.Limit).
+      Scan(&amp;items).Error; err != <span class="hljs-literal">nil</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>, err
+  }
+  <span class="hljs-keyword">return</span> items, &amp;pagination, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="&#x4F7F;&#x7528;&#x4E8B;&#x52A1;">&#x4F7F;&#x7528;&#x4E8B;&#x52A1;</h2>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> service
+<span class="hljs-keyword">import</span>(...)
+
+<span class="hljs-keyword">type</span> userService <span class="hljs-keyword">struct</span> {}
+
+<span class="hljs-comment">// User &#x7528;&#x6237;&#x670D;&#x52A1;</span>
+<span class="hljs-keyword">func</span> User()*userService  {
+    <span class="hljs-keyword">return</span> &amp;userService{}
+}
+<span class="hljs-comment">// Register &#x6CE8;&#x518C;</span>
+<span class="hljs-keyword">func</span> (service *userService) Register(req request.UserRegisterRequest) error {
+    <span class="hljs-comment">// &#x5C06;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x5305;&#x88F9;&#x5728;Transaction&#x5185;&#x90E8;&#xFF0C;&#x4FDD;&#x8BC1;&#x4E8B;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6574;</span>
+    err := app.DB().Transaction(<span class="hljs-keyword">func</span>(tx *gorm.DB) error {
+        userDao := dao.User(tx)
+        <span class="hljs-comment">// &#x6839;&#x636E;&#x90AE;&#x7BB1;&#x83B7;&#x53D6;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        user, err := userDao.GetByEmail(req.Email)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &amp;&amp; err != gorm.ErrRecordNotFound {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;&#x83B7;&#x53D6;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x5931;&#x8D25;:%v&quot;</span>, err)
+        }
+
+        <span class="hljs-comment">// &#x7528;&#x6237;&#x5DF2;&#x5B58;&#x5728;</span>
+        <span class="hljs-keyword">if</span> user != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;&#x8BE5;&#x90AE;&#x7BB1;&#x5DF2;&#x88AB;&#x6CE8;&#x518C;&quot;</span>)
+        }
+
+        now := <span class="hljs-keyword">int</span>(date.GetLocalTime().Unix())
+
+        user = <span class="hljs-built_in">new</span>(entity.UserEntity)
+        user.Email = req.Email
+        user.Password = strings.Md5(req.Pass)
+        user.CreatedAt = now
+        user.UpdatedAt = now
+
+        <span class="hljs-keyword">return</span> userDao.Create(user)
+    })
+
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> errors.New(enum.DatabaseSaveFailed, fmt.Sprintf(<span class="hljs-string">&quot;&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x5931;&#x8D25;:%v&quot;</span>, err))
+    }
+
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+}
+</code></pre>
 
                                 
                                 </section>
@@ -579,7 +628,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.2.2.数据库","level":"1.4.2","depth":2,"next":{"title":"1.2.3.Redis","level":"1.4.3","depth":2,"path":"component/redis.md","ref":"component/redis.md","articles":[]},"previous":{"title":"1.2.1.配置","level":"1.4.1","depth":2,"path":"component/config.md","ref":"component/config.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component/database.md","mtime":"2020-09-16T14:42:01.784Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-17T14:23:31.033Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.2.2.数据库","level":"1.4.2","depth":2,"next":{"title":"1.2.3.Redis","level":"1.4.3","depth":2,"path":"component/redis.md","ref":"component/redis.md","articles":[]},"previous":{"title":"1.2.1.配置","level":"1.4.1","depth":2,"path":"component/config.md","ref":"component/config.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component/database.md","mtime":"2020-09-23T14:51:24.339Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-23T14:47:02.446Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

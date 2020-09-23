@@ -5,9 +5,9 @@
 ```go
 package main
 func main() {
-    var address = "http://localhost:8080/check"
+    var address = "http://localhost:8080/api"
 
-    response, err := app.Http().Get(address)
+    response, err := curl.Get(address)
     if err != nil {
         panic(err)
     }
@@ -22,38 +22,33 @@ func main() {
 ```go
 params := make(url.Values)
 params.Set("id", "1")
-response, err := app.Http().Post(address, strings.NewReader(params.Encode()))
+response, err := curl.Post(address, strings.NewReader(params.Encode()))
 ```
 
 ## PUT请求
 ```go
-response, err := app.Http().Put(address, nil)
+response, err := curl.Put(address, nil)
 ```
 
 ## PUT请求
 ```go
-response, err := app.Http().Put(address, nil)
+response, err := curl.Put(address, nil)
 ```
 
 
 ## Patch请求
 ```go
-response, err := app.Http().Patch(address, nil)
+response, err := curl.Patch(address, nil)
 ```
 
 ## Delete请求
 ```go
-response, err := app.Http().Delete(address, nil)
-```
-
-## Post/json请求
-```go
-response, err := app.Http().PostJson(address, nil)
+response, err := curl.Delete(address, nil)
 ```
 
 ## 自定义请求
 ```go
-request := app.Http().NewRequest(http.MethodPost, url, body)
+request := curl.NewRequest(http.MethodPost, url, body)
 response, err := request.Send()
 if err != nil {
     return err

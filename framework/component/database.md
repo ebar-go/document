@@ -1,15 +1,51 @@
 # 说明
-数据库组件是基于`https://github.com/go-gorm/gorm`实现的，同时实现了多数据库链接、读写分离等功能。稍后升级为gorm2.0
+数据库组件是基于`gorm`实现的，现已升级到2.0版本，支持读写分离与多数据库连接。
+
+## 配置项
+- 示例
+```yaml
+mysql:    # mysql配置。支持多数据库，读写分离
+  maxIdleConnections: 10  # 最大空闲连接数
+  maxOpenConnections: 40  # 最大打开连接数
+  maxLifeTime: 8          # 超时时间
+  dsn: root:123456@tcp(127.0.0.1:3306)/demo?charset=utf8mb4   # 主连接
+  other:	# 另外的库连接
+    sources:	# 主库
+      - root:123456@tcp(127.0.0.1:3307)/other?charset=utf8mb4
+    replicas:   # 从库
+      - root:123456@tcp(127.0.0.1:3308)/other?charset=utf8mb4
+    tables:
+      - orders  # gorm会根据表自动切换连接，及其方便
+```
+
+- 说明
+    - maxIdleConnections: 连接池的最大空闲数
+    - maxOpenConnections: 连接池的最大打开连接数
+    - maxLifeTime: 超时时间
+    - dsn: 数据库相关配置
+
 
 ## 初始化
 一般加载数据库是在main.go里的init函数，连接数据库放在加载配置项成功后。
 ```go
+import (
+	"github.com/ebar-go/ego/app"
+	"github.com/ebar-go/ego/component/mysql"
+	"github.com/ebar-go/egu"
+)
 func init()  {
 	// 加载配置
-	secure.Panic(app.Config().LoadFile("app.yaml"))
+	egu.SecurePanic(app.Config().LoadFile("app.yaml"))
 
 	// 初始化数据库
-    secure.Panic(app.InitDB())
+	egu.SecurePanic(app.InitDB())
+	
+	// 可选，使用集群和多连接配置
+	egu.SecurePanic(app.DB().Use(mysql.Resolver().Register(mysql.ResolverConfig(mysql.ResolverItem{
+		Sources:  app.Config().GetStringSlice("mysql.other.sources"),
+		Replicas: app.Config().GetStringSlice("mysql.other.replicas"),
+		Tables:   app.Config().GetStringSlice("mysql.other.tables"),
+	}))))
 }
 ```
 ## 表结构
@@ -57,10 +93,6 @@ const SoftDeleteCondition = "is_del = 0" // 软删除条件
 type BaseDao struct {
 	db *gorm.DB
 }
-// Unscoped 软删除
-func (dao *BaseDao) Unscoped() *gorm.DB {
-	return dao.db.Where("is_del", 1)
-}
 // Create 创建
 func (dao *BaseDao) Create(entity interface{}) error {
 	return dao.db.Create(entity).Error
@@ -91,7 +123,7 @@ func User(db *gorm.DB) *userDao {
 }
 // GetByUsername 根据用户名获取记录
 func (dao *userDao) GetByEmail(email string) (*entity.UserEntity, error) {
-	query := dao.Unscoped().Table(entity.TableUser).
+	query := dao.Table(entity.TableUser).
 		Where("email = ?", email)
 	user := new(entity.UserEntity)
 	if err := query.First(user).Error; err != nil {
@@ -161,9 +193,4 @@ func (service *userService) Register(req request.UserRegisterRequest) error {
 
 	return nil
 }
-```
-
-## 使用其他数据库
-```go
-app.GetDB("otherDB").Table("xxx")...
 ```

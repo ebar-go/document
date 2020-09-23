@@ -168,6 +168,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.4" data-path="../http/error.html">
+            
+                <a href="../http/error.html">
+            
+                    
+                    1.1.4.错误
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -320,77 +333,6 @@
             
 
             
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.5.1" data-path="../middleware/trace.html">
-            
-                <a href="../middleware/trace.html">
-            
-                    
-                    1.3.1.全局唯一ID
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.2" data-path="../middleware/request_log.html">
-            
-                <a href="../middleware/request_log.html">
-            
-                    
-                    1.3.2.请求日志
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.3" data-path="../middleware/cors.html">
-            
-                <a href="../middleware/cors.html">
-            
-                    
-                    1.3.3.跨域
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.4" data-path="../middleware/jwt.html">
-            
-                <a href="../middleware/jwt.html">
-            
-                    
-                    1.3.4.JWT
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.5" data-path="../middleware/recover.html">
-            
-                <a href="../middleware/recover.html">
-            
-                    
-                    1.3.5.Recover
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
         </li>
     
         <li class="chapter " data-level="1.6" data-path="../util.html">
@@ -403,90 +345,6 @@
                 </a>
             
 
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.1" data-path="../util/array.html">
-            
-                <a href="../util/array.html">
-            
-                    
-                    1.4.1.数组
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.2" data-path="../util/date.html">
-            
-                <a href="../util/date.html">
-            
-                    
-                    1.4.2.时间
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3" data-path="../util/security.html">
-            
-                <a href="../util/security.html">
-            
-                    
-                    1.4.3.加密/解密
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.4" data-path="../util/json.html">
-            
-                <a href="../util/json.html">
-            
-                    
-                    1.4.4.Json
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.5" data-path="string.html">
-            
-                <a href="string.html">
-            
-                    
-                    1.4.5.字符串
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.6" data-path="number.html">
-            
-                <a href="number.html">
-            
-                    
-                    1.4.6.数字
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
             
         </li>
     
@@ -540,7 +398,6 @@
 <h2 id="&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#x6587;&#x4EF6;">&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2>
 <p>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x52A0;&#x8F7D;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x4E00;&#x822C;&#x90FD;&#x6BD4;&#x8F83;&#x9AD8;&#xFF0C;&#x6240;&#x4EE5;&#x5EFA;&#x8BAE;<code>main.go</code>&#x91CC;&#x7684;<code>init</code>&#x65B9;&#x6CD5;&#x3002;</p>
 <pre><code>import (
-    &quot;github.com/ebar-go/ego&quot;
     &quot;github.com/ebar-go/ego/app&quot;
     &quot;github.com/ebar-go/egu&quot;
 )
@@ -550,14 +407,13 @@ func init() {
 }
 
 func main () {
-    fmt.Println(app.Config().Server()) // &#x6253;&#x5370;&#x7CFB;&#x7EDF;&#x914D;&#x7F6E;
-    fmt.Println(app.Config().Mysql()) // &#x6253;&#x5370;mysql&#x914D;&#x7F6E;
-    fmt.Println(app.Config().Redis()) // &#x6253;&#x5370;redis&#x914D;&#x7F6E;
+    fmt.Println(app.Config().IsProduct())
 }
 </code></pre><h2 id="&#x7CFB;&#x7EDF;&#x914D;&#x7F6E;">&#x7CFB;&#x7EDF;&#x914D;&#x7F6E;</h2>
 <ul>
 <li><p>&#x793A;&#x4F8B;   </p>
 <pre><code class="lang-yaml"><span class="hljs-attr">server:</span> <span class="hljs-comment"># &#x670D;&#x52A1;&#x5668;&#x914D;&#x7F6E;</span>
+<span class="hljs-attr">environment:</span> product <span class="hljs-comment"># &#x8FD0;&#x884C;&#x73AF;&#x5883;</span>
 <span class="hljs-attr">httpPort:</span> <span class="hljs-number">8080</span>  <span class="hljs-comment"># &#x7AEF;&#x53E3;&#x53F7;</span>
 <span class="hljs-attr">systemName:</span> ego-demo <span class="hljs-comment"># &#x7CFB;&#x7EDF;&#x540D;&#x79F0;</span>
 <span class="hljs-attr">maxResponseLogSize:</span> <span class="hljs-number">2000</span> <span class="hljs-comment"># &#x54CD;&#x5E94;&#x5185;&#x5BB9;&#x622A;&#x53D6;&#x957F;&#x5EA6;</span>
@@ -587,66 +443,6 @@ func main () {
 </ul>
 </li>
 </ul>
-<h2 id="&#x6570;&#x636E;&#x5E93;&#x914D;&#x7F6E;">&#x6570;&#x636E;&#x5E93;&#x914D;&#x7F6E;</h2>
-<ul>
-<li><p>&#x793A;&#x4F8B;</p>
-<pre><code class="lang-yaml"><span class="hljs-attr">mysql:</span>    <span class="hljs-comment"># mysql&#x914D;&#x7F6E;&#x3002;&#x652F;&#x6301;&#x591A;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x8BFB;&#x5199;&#x5206;&#x79BB;</span>
-<span class="hljs-attr">default:</span>  <span class="hljs-comment"># &#x9ED8;&#x8BA4;&#x8FDE;&#x63A5;&#xFF0C;&#x5982;&#x679C;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x5E93;&#x8981;&#x8FDE;&#x63A5;&#xFF0C;&#x6362;&#x4E2A;&#x540D;&#x5B57;&#x5373;&#x53EF;</span>
-<span class="hljs-attr">  maxIdleConnections:</span> <span class="hljs-number">10</span>  <span class="hljs-comment"># &#x6700;&#x5927;&#x7A7A;&#x95F2;&#x8FDE;&#x63A5;&#x6570;</span>
-<span class="hljs-attr">  maxOpenConnections:</span> <span class="hljs-number">40</span>  <span class="hljs-comment"># &#x6700;&#x5927;&#x6253;&#x5F00;&#x8FDE;&#x63A5;&#x6570;</span>
-<span class="hljs-attr">  maxLifeTime:</span> <span class="hljs-number">8</span>          <span class="hljs-comment"># &#x8D85;&#x65F6;&#x65F6;&#x95F4;</span>
-<span class="hljs-attr">  debug:</span> on <span class="hljs-comment"># &#x662F;&#x5426;&#x5F00;&#x542F;debug&#x6A21;&#x5F0F;&#xFF0C;&#x4F1A;&#x6253;&#x5370;&#x51FA;&#x76F8;&#x5173;&#x7684;sql</span>
-<span class="hljs-attr">  strict:</span> off <span class="hljs-comment"># &#x662F;&#x5426;&#x5F00;&#x542F;&#x4E25;&#x683C;&#x6A21;&#x5F0F;&#xFF0C;&#x5982;&#x679C;&#x5F00;&#x542F;&#xFF0C;&#x5F53;&#x6570;&#x636E;&#x5E93;&#x521D;&#x59CB;&#x5316;&#x8FDE;&#x63A5;&#x65F6;&#xFF0C;&#x76F4;&#x63A5;panic</span>
-<span class="hljs-attr">  dsn:</span>    <span class="hljs-comment"># &#x8FDE;&#x63A5;&#x914D;&#x7F6E;&#xFF0C;&#x9ED8;&#x8BA4;&#x7B2C;&#x4E00;&#x4E2A;&#x4E3A;&#x5199;&#x5E93;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x53EA;&#x914D;&#x7F6E;&#x4E00;&#x4E2A;&#xFF0C;&#x5373;&#x8BFB;&#x5199;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;</span>
-<span class="hljs-attr">    - host:</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>
-<span class="hljs-attr">      port:</span> <span class="hljs-number">32768</span>
-<span class="hljs-attr">      user:</span> root
-<span class="hljs-attr">      password:</span> mysql
-<span class="hljs-attr">      name:</span> blog
-<span class="hljs-attr">      charset:</span> utf8mb4 <span class="hljs-comment"># &#x9ED8;&#x8BA4;&#x4E3A;utf8mb4</span>
-<span class="hljs-attr">other:</span>    <span class="hljs-comment"># &#x53E6;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;</span>
-<span class="hljs-attr">  maxIdleConnections:</span> <span class="hljs-number">10</span>  <span class="hljs-comment"># &#x6700;&#x5927;&#x7A7A;&#x95F2;&#x8FDE;&#x63A5;&#x6570;</span>
-<span class="hljs-attr">  maxOpenConnections:</span> <span class="hljs-number">40</span>  <span class="hljs-comment"># &#x6700;&#x5927;&#x6253;&#x5F00;&#x8FDE;&#x63A5;&#x6570;</span>
-<span class="hljs-attr">  maxLifeTime:</span> <span class="hljs-number">8</span>          <span class="hljs-comment"># &#x8D85;&#x65F6;&#x65F6;&#x95F4;</span>
-<span class="hljs-attr">  dsn:</span>    <span class="hljs-comment"># &#x8FDE;&#x63A5;&#x914D;&#x7F6E;&#xFF0C;&#x9ED8;&#x8BA4;&#x7B2C;&#x4E00;&#x4E2A;&#x4E3A;&#x5199;&#x5E93;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x53EA;&#x914D;&#x7F6E;&#x4E00;&#x4E2A;&#xFF0C;&#x5373;&#x8BFB;&#x5199;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;</span>
-<span class="hljs-attr">    - host:</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.2</span>
-<span class="hljs-attr">      port:</span> <span class="hljs-number">3306</span>
-<span class="hljs-attr">      user:</span> root
-<span class="hljs-attr">      password:</span> mysql
-<span class="hljs-attr">      name:</span> otherDB
-<span class="hljs-attr">      charset:</span> utf8mb4 <span class="hljs-comment"># &#x9ED8;&#x8BA4;&#x4E3A;utf8mb4</span>
-</code></pre>
-</li>
-<li><p>&#x8BF4;&#x660E;</p>
-<ul>
-<li>maxIdleConnections: &#x8FDE;&#x63A5;&#x6C60;&#x7684;&#x6700;&#x5927;&#x7A7A;&#x95F2;&#x6570;</li>
-<li>maxOpenConnections: &#x8FDE;&#x63A5;&#x6C60;&#x7684;&#x6700;&#x5927;&#x6253;&#x5F00;&#x8FDE;&#x63A5;&#x6570;</li>
-<li>maxLifeTime: &#x8D85;&#x65F6;&#x65F6;&#x95F4;</li>
-<li>dsn: &#x6570;&#x636E;&#x5E93;&#x76F8;&#x5173;&#x914D;&#x7F6E;</li>
-<li>debug: &#x662F;&#x5426;&#x5F00;&#x542F;debug&#x6A21;&#x5F0F;&#xFF0C;&#x4F1A;&#x6253;&#x5370;&#x51FA;&#x76F8;&#x5173;&#x7684;sql&#x3002;&#x9ED8;&#x8BA4;&#x4E0D;&#x5F00;&#x542F;</li>
-<li>strict: &#x662F;&#x5426;&#x5F00;&#x542F;&#x4E25;&#x683C;&#x6A21;&#x5F0F;&#xFF0C;&#x5982;&#x679C;&#x5F00;&#x542F;&#xFF0C;&#x5F53;&#x6570;&#x636E;&#x5E93;&#x521D;&#x59CB;&#x5316;&#x8FDE;&#x63A5;&#x65F6;&#xFF0C;&#x76F4;&#x63A5;panic&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;&#x4E0D;&#x5F00;&#x542F;&#x3002;</li>
-</ul>
-</li>
-</ul>
-<h2 id="redis&#x914D;&#x7F6E;">Redis&#x914D;&#x7F6E;</h2>
-<ul>
-<li>&#x793A;&#x4F8B;<pre><code class="lang-yaml"><span class="hljs-attr">redis:</span>
-<span class="hljs-attr">host:</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span> <span class="hljs-comment"># &#x5730;&#x5740;</span>
-<span class="hljs-attr">pass:</span> xx  <span class="hljs-comment"># &#x5BC6;&#x7801;</span>
-<span class="hljs-attr">port:</span> <span class="hljs-number">6379</span> <span class="hljs-comment"># &#x7AEF;&#x53E3;</span>
-<span class="hljs-attr">poolSize:</span> <span class="hljs-number">100</span> <span class="hljs-comment"># &#x8FDE;&#x63A5;&#x6C60;&#x6570;&#x91CF;</span>
-<span class="hljs-attr">maxRetries:</span> <span class="hljs-number">3</span> <span class="hljs-comment"># &#x6700;&#x5927;&#x5C1D;&#x8BD5;&#x6B21;&#x6570;</span>
-<span class="hljs-attr">idleTimeout:</span> <span class="hljs-number">3</span> <span class="hljs-comment"># &#x8D85;&#x65F6;&#x65F6;&#x95F4;</span>
-<span class="hljs-attr">cluster:</span>  <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.2</span>:<span class="hljs-number">6379</span>,<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.3</span>:<span class="hljs-number">6379</span> <span class="hljs-comment"># &#x96C6;&#x7FA4;&#x914D;&#x7F6E;</span>
-</code></pre>
-</li>
-<li>&#x8BF4;&#x660E;<ul>
-<li>poolSize: &#x8FDE;&#x63A5;&#x6C60;&#x6570;&#x91CF;</li>
-<li>cluster: redis&#x96C6;&#x7FA4;&#x5730;&#x5740;&#xFF0C;&#x7528;&#x9017;&#x53F7;&#x9694;&#x5F00;&#x3002;</li>
-</ul>
-</li>
-</ul>
-<h2 id="etcd&#x914D;&#x7F6E;">Etcd&#x914D;&#x7F6E;</h2>
 <h2 id="&#x81EA;&#x5B9A;&#x4E49;&#x914D;&#x7F6E;">&#x81EA;&#x5B9A;&#x4E49;&#x914D;&#x7F6E;</h2>
 <p>&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x9879;&#x76EE;&#x7684;&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x3002;   </p>
 <ul>
@@ -707,7 +503,7 @@ app.Config().GetBool(<span class="hljs-string">&quot;app.someBool&quot;</span>)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.2.1.配置","level":"1.4.1","depth":2,"next":{"title":"1.2.2.数据库","level":"1.4.2","depth":2,"path":"component/database.md","ref":"component/database.md","articles":[]},"previous":{"title":"1.2.组件","level":"1.4","depth":1,"path":"component.md","ref":"component.md","articles":[{"title":"1.2.1.配置","level":"1.4.1","depth":2,"path":"component/config.md","ref":"component/config.md","articles":[]},{"title":"1.2.2.数据库","level":"1.4.2","depth":2,"path":"component/database.md","ref":"component/database.md","articles":[]},{"title":"1.2.3.Redis","level":"1.4.3","depth":2,"path":"component/redis.md","ref":"component/redis.md","articles":[]},{"title":"1.2.4.日志","level":"1.4.4","depth":2,"path":"component/log.md","ref":"component/log.md","articles":[]},{"title":"1.2.5.事件","level":"1.4.5","depth":2,"path":"component/event.md","ref":"component/event.md","articles":[]},{"title":"1.2.6.http请求","level":"1.4.6","depth":2,"path":"component/curl.md","ref":"component/curl.md","articles":[]},{"title":"1.2.7.定时任务","level":"1.4.7","depth":2,"path":"component/task.md","ref":"component/task.md","articles":[]},{"title":"1.2.8.swagger","level":"1.4.8","depth":2,"path":"component/swagger.md","ref":"component/swagger.md","articles":[]},{"title":"1.2.9.pprof","level":"1.4.9","depth":2,"path":"component/pprof.md","ref":"component/pprof.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component/config.md","mtime":"2020-09-17T15:12:10.452Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-17T14:23:31.033Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.2.1.配置","level":"1.4.1","depth":2,"next":{"title":"1.2.2.数据库","level":"1.4.2","depth":2,"path":"component/database.md","ref":"component/database.md","articles":[]},"previous":{"title":"1.2.组件","level":"1.4","depth":1,"path":"component.md","ref":"component.md","articles":[{"title":"1.2.1.配置","level":"1.4.1","depth":2,"path":"component/config.md","ref":"component/config.md","articles":[]},{"title":"1.2.2.数据库","level":"1.4.2","depth":2,"path":"component/database.md","ref":"component/database.md","articles":[]},{"title":"1.2.3.Redis","level":"1.4.3","depth":2,"path":"component/redis.md","ref":"component/redis.md","articles":[]},{"title":"1.2.4.日志","level":"1.4.4","depth":2,"path":"component/log.md","ref":"component/log.md","articles":[]},{"title":"1.2.5.事件","level":"1.4.5","depth":2,"path":"component/event.md","ref":"component/event.md","articles":[]},{"title":"1.2.6.http请求","level":"1.4.6","depth":2,"path":"component/curl.md","ref":"component/curl.md","articles":[]},{"title":"1.2.7.定时任务","level":"1.4.7","depth":2,"path":"component/task.md","ref":"component/task.md","articles":[]},{"title":"1.2.8.swagger","level":"1.4.8","depth":2,"path":"component/swagger.md","ref":"component/swagger.md","articles":[]},{"title":"1.2.9.pprof","level":"1.4.9","depth":2,"path":"component/pprof.md","ref":"component/pprof.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component/config.md","mtime":"2020-09-23T14:38:53.331Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-23T14:47:02.446Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

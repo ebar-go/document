@@ -168,6 +168,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.4" data-path="../http/error.html">
+            
+                <a href="../http/error.html">
+            
+                    
+                    1.1.4.错误
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -320,77 +333,6 @@
             
 
             
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.5.1" data-path="../middleware/trace.html">
-            
-                <a href="../middleware/trace.html">
-            
-                    
-                    1.3.1.全局唯一ID
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.2" data-path="../middleware/request_log.html">
-            
-                <a href="../middleware/request_log.html">
-            
-                    
-                    1.3.2.请求日志
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.3" data-path="../middleware/cors.html">
-            
-                <a href="../middleware/cors.html">
-            
-                    
-                    1.3.3.跨域
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.4" data-path="../middleware/jwt.html">
-            
-                <a href="../middleware/jwt.html">
-            
-                    
-                    1.3.4.JWT
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.5" data-path="../middleware/recover.html">
-            
-                <a href="../middleware/recover.html">
-            
-                    
-                    1.3.5.Recover
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
         </li>
     
         <li class="chapter " data-level="1.6" data-path="../util.html">
@@ -403,90 +345,6 @@
                 </a>
             
 
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.1" data-path="../util/array.html">
-            
-                <a href="../util/array.html">
-            
-                    
-                    1.4.1.数组
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.2" data-path="../util/date.html">
-            
-                <a href="../util/date.html">
-            
-                    
-                    1.4.2.时间
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3" data-path="../util/security.html">
-            
-                <a href="../util/security.html">
-            
-                    
-                    1.4.3.加密/解密
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.4" data-path="../util/json.html">
-            
-                <a href="../util/json.html">
-            
-                    
-                    1.4.4.Json
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.5" data-path="string.html">
-            
-                <a href="string.html">
-            
-                    
-                    1.4.5.字符串
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.6" data-path="number.html">
-            
-                <a href="number.html">
-            
-                    
-                    1.4.6.数字
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
             
         </li>
     
@@ -535,8 +393,45 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="127&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;">1.2.7.&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;</h1>
+                                <h1 id="&#x8BF4;&#x660E;">&#x8BF4;&#x660E;</h1>
+<p>&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;&#x662F;&#x96C6;&#x6210;&#x7684;<code>github.com/robfig/cron</code>&#xFF0C;&#x672C;&#x6587;&#x4ECB;&#x7ECD;&#x5982;&#x4F55;&#x4F18;&#x7F8E;&#x7684;&#x4F7F;&#x7528;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;&#x3002;</p>
+<h2 id="&#x793A;&#x4F8B;">&#x793A;&#x4F8B;</h2>
+<p>&#x6211;&#x4EEC;&#x5C06;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;<code>task</code>&#x6A21;&#x5757;&#x91CC;</p>
+<ul>
+<li><p>demo.go</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> task
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+<span class="hljs-keyword">type</span> DemoJob <span class="hljs-keyword">struct</span> {
+}
+<span class="hljs-comment">// &#x7EE7;&#x627F;cron.Job&#x63A5;&#x53E3;</span>
+<span class="hljs-keyword">func</span> (job DemoJob) Run() {
+  fmt.Println(<span class="hljs-string">&quot;task is running..&quot;</span>)
+}
+</code></pre>
+</li>
+<li><p>&#x52A0;&#x8F7D;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> task
+fucn Load() {
+  <span class="hljs-comment">// &#x4F7F;&#x7528;cron.Job&#xFF0C;&#x63A8;&#x8350;</span>
+  _ = app.Task().AddJob(<span class="hljs-string">&quot;*/5 * * * * ?&quot;</span>, <span class="hljs-built_in">new</span>(Demo))
 
+  <span class="hljs-comment">// &#x4F7F;&#x7528;func</span>
+  _ = app.Task().AddFunc(<span class="hljs-string">&quot;*/5 * * * * ?&quot;</span>, <span class="hljs-keyword">func</span>() {
+      fmt.Println(<span class="hljs-number">123</span>)
+  })
+}
+</code></pre>
+</li>
+</ul>
+<p>&#x6700;&#x540E;&#x5728;main&#x51FD;&#x6570;&#x91CC;&#x8C03;&#x7528;&#x4E00;&#x4E0B;Load&#x65B9;&#x6CD5;</p>
+<pre><code>func main() {
+    //...
+    task.Load()
+    //...
+
+    server.Start()
+}
+</code></pre>
                                 
                                 </section>
                             
@@ -579,7 +474,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.2.7.定时任务","level":"1.4.7","depth":2,"next":{"title":"1.2.8.swagger","level":"1.4.8","depth":2,"path":"component/swagger.md","ref":"component/swagger.md","articles":[]},"previous":{"title":"1.2.6.http请求","level":"1.4.6","depth":2,"path":"component/curl.md","ref":"component/curl.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component/task.md","mtime":"2020-09-16T14:42:01.784Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-17T14:23:31.033Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.2.7.定时任务","level":"1.4.7","depth":2,"next":{"title":"1.2.8.swagger","level":"1.4.8","depth":2,"path":"component/swagger.md","ref":"component/swagger.md","articles":[]},"previous":{"title":"1.2.6.http请求","level":"1.4.6","depth":2,"path":"component/curl.md","ref":"component/curl.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component/task.md","mtime":"2020-09-20T09:15:21.942Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-23T14:47:02.446Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
