@@ -19,24 +19,25 @@ func (job DemoJob) Run() {
 - 加载定时任务
 ```go
 package task
-fucn Load() {
+fucn Loader(task *cron.Cron) {
     // 使用cron.Job，推荐
-    _ = app.Task().AddJob("*/5 * * * * ?", new(Demo))
+    _ = task.AddJob("*/5 * * * * ?", new(Demo))
 
     // 使用func
-    _ = app.Task().AddFunc("*/5 * * * * ?", func() {
+    _ = task.AddFunc("*/5 * * * * ?", func() {
 		fmt.Println(123)
 	})
 }
 ```
 
 最后在main函数里调用一下Load方法
-```
+```go
 func main() {
     //...
-    task.Load()
-    //...
+    app := ego.App()
+    app.LoadTask(task.Loader)
 
-    server.Start()
+    app.StartCron()
+    app.Run()
 }
 ```

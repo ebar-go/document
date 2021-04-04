@@ -4,8 +4,8 @@ Swagger 是一个规范和完整的框架，用于生成、描述、调用和可
 ## Swag
 在开始使用swagger之前，需要安装`swag`
 ```
-// 可以通过go get 获取，也可以直接去 https://github.com/swaggo/swag 下载
-go get -u github.com/swaggo/swag/cmd/swag
+// 下载地址
+https://github.com/swaggo/swag
 ```
 
 ## 示例
@@ -24,11 +24,7 @@ go get -u github.com/swaggo/swag/cmd/swag
 // @host localhost:8080
 // @BasePath /
 func main()  {
-	server := ego.HttpServer()
-	// 加载路由
 	// ...
-	// 启动
-	egu.SecurePanic(server.Start())
 }
 ```
 
@@ -71,7 +67,7 @@ swag init
 ## 开启swagger
 - 配置
 ```
-server:
+http:
     swagger: on
 ```
 
@@ -79,8 +75,6 @@ server:
 ```go
 import (
     _ "demo/docs" // 这行不能少
-    egoHandler "github.com/ebar-go/ego/http/handler"
 )
 // 通过 {host}/swagger/index.html访问swagger web
-router.GET("/swagger/*any", egoHandler.SwaggerHandler())
 ```

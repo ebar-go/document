@@ -16,5 +16,3 @@ https://github.com/ebar-go/ego
 - 丰富的中间件：全局唯一ID，请求日志，跨域，JWT校验，Recover等
 - 常用的工具：数组，事件，字符串，Json，数字等
 
-## TODO
-- 升级gorm到2.0

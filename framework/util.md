@@ -11,7 +11,7 @@
 ## 安装
 ego框架默认引入了egu工具包，如果要单独使用：
 ```
-go get github.com/ebar-go/ego
+go get github.com/ebar-go/egu
 ```
 
 ## 字符串

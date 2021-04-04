@@ -11,16 +11,23 @@ go get github.com/ebar-go/ego
 ```go
 import (
   "github.com/ebar-go/ego"
-  "github.com/ebar-go/egu"
+  "github.com/ebar-go/ego/http/response"
+  "github.com/gin-gonic/gin"
 )
 func main() {
-    server := ego.HttpServer()
-    // 添加路由
-    server.Router.GET("/test", func(context *gin.Context) {
-        fmt.Println("hello,world")
-    })
-    // 默认启动8080
-    egu.SecurePanic(server.Start())
+    app := ego.App()
+    // 加载路由
+    if err := app.LoadRouter(func (router *gin.Engine) {
+        router.GET("/", func(ctx *gin.Context) {
+          response.WrapContext(ctx).Success(nil)
+        })
+    }); err != nil {
+      log.Fatalf("load router failed: %v\n", err)
+    }
+    // 启动http服务
+	  app.ServeHTTP()
+	  // 启动应用
+	  app.Run()
 }
 ```
 

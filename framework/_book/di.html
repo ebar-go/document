@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>更新日志 · GitBook</title>
+        <title>1.1.1.依赖注入 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="start.html" />
+    <link rel="next" href="http.html" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="start.html" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="ChangeLog.html">
+        <li class="chapter " data-level="1.2" data-path="ChangeLog.html">
             
                 <a href="ChangeLog.html">
             
@@ -129,7 +129,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="di.html">
+        <li class="chapter active" data-level="1.3.1" data-path="di.html">
             
                 <a href="di.html">
             
@@ -397,7 +397,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >更新日志</a>
+        <a href="." >1.1.1.依赖注入</a>
     </h1>
 </div>
 
@@ -413,13 +413,54 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x8BF4;&#x660E;">&#x8BF4;&#x660E;</h1>
-<p>&#x8BB0;&#x5F55;&#x6846;&#x67B6;&#x7684;&#x66F4;&#x65B0;&#x65E5;&#x5FD7;&#x3002;</p>
+<p>&#x5728;&#x6846;&#x67B6;&#x91CC;&#xFF0C;&#x57FA;&#x4E8E;<code>github.com/uber-go/dig</code>&#x5B9E;&#x73B0;&#x7684;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x3002;&#x901A;&#x8FC7;&#x5BB9;&#x5668;&#x65B9;&#x5F0F;&#x7BA1;&#x7406;&#x5BF9;&#x5982;mysql&#x3001;redis&#x7B49;&#x57FA;&#x7840;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#x3002;</p>
+<h2 id="&#x65B9;&#x6CD5;">&#x65B9;&#x6CD5;</h2>
 <ul>
-<li>[2021-04-03] v1.0.0<ul>
-<li>&#x91CD;&#x6784;&#x6846;&#x67B6;</li>
+<li>app.Container().Provide: &#x6CE8;&#x5165;&#x67D0;&#x7C7B;&#x5B9E;&#x4F8B;&#x7684;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;&#x3002;</li>
+<li>app.Container().Invoke&#xFF1A; &#x6267;&#x884C;&#x51FD;&#x6570;&#xFF0C;&#x53C2;&#x6570;&#x4E3A;&#x4F9D;&#x8D56;&#x7684;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF0C;&#x4ECE;&#x5BB9;&#x5668;&#x5185;&#x5BFB;&#x627E;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x8C03;&#x7528;Provide&#x6CE8;&#x5165;&#x7684;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;&#x3002;</li>
 </ul>
+<h2 id="&#x4F7F;&#x7528;&#x8BF4;&#x660E;">&#x4F7F;&#x7528;&#x8BF4;&#x660E;</h2>
+<ul>
+<li>main.go<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+<span class="hljs-keyword">import</span>(
+  <span class="hljs-string">&quot;github.com/ebar-go/ego/component/redis&quot;</span>
+)
+<span class="hljs-keyword">type</span> SomeObject <span class="hljs-keyword">struct</span>{
+  Name <span class="hljs-keyword">string</span>
+}
+<span class="hljs-keyword">func</span> NewSomeObject() *SomeObject {
+  <span class="hljs-keyword">return</span> &amp;SomeObject{}
+}
+<span class="hljs-keyword">func</span> main() {
+  app := ego.App()
+  <span class="hljs-comment">// &#x6CE8;&#x5165;SomeObject&#x7684;&#x5B9E;&#x4F8B;&#x5316;&#x65B9;&#x6CD5;</span>
+  app.Container().Provide(NewSomeObject)
+  <span class="hljs-comment">// &#x83B7;&#x53D6;&#x5BB9;&#x5668;&#x91CC;&#x6CE8;&#x5165;&#x7684;SomeObject&#x5B9E;&#x4F8B;&#xFF0C;&#x6253;&#x5370;name</span>
+  app.Container().Invoke(<span class="hljs-keyword">func</span>(someObject *SomeObject) {
+      fmt.Println(someObject.Name)
+  })
+}
+</code></pre>
 </li>
 </ul>
+<h2 id="&#x7CFB;&#x7EDF;&#x7EC4;&#x4EF6;">&#x7CFB;&#x7EDF;&#x7EC4;&#x4EF6;</h2>
+<pre><code class="lang-go"><span class="hljs-comment">// &#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E93;</span>
+app.Container().Invoke(<span class="hljs-keyword">func</span>(db mysql.Database) {
+    <span class="hljs-comment">// ...</span>
+})
+<span class="hljs-comment">// &#x4F7F;&#x7528;redis</span>
+app.Container().Invoke(<span class="hljs-keyword">func</span>(conn redis.Conn) {
+    <span class="hljs-comment">// ...</span>
+})
+<span class="hljs-comment">// &#x4F7F;&#x7528;&#x65E5;&#x5FD7;</span>
+app.Container().Invoke(<span class="hljs-keyword">func</span>(logger *log.Logger) {
+    <span class="hljs-comment">// ...</span>
+})
+<span class="hljs-comment">// &#x4F7F;&#x7528;etcd</span>
+app.Container().Invoke(<span class="hljs-keyword">func</span>(client *etcd.Client) {
+    <span class="hljs-comment">// ...</span>
+})
+</code></pre>
 
                                 
                                 </section>
@@ -447,12 +488,12 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 介绍">
+                <a href="start.html" class="navigation navigation-prev " aria-label="Previous page: 1.1.快速开始">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="start.html" class="navigation navigation-next " aria-label="Next page: 1.1.快速开始">
+                <a href="http.html" class="navigation navigation-next " aria-label="Next page: 1.2.http服务">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -463,7 +504,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"更新日志","level":"1.2","depth":1,"next":{"title":"1.1.快速开始","level":"1.3","depth":1,"path":"start.md","ref":"start.md","articles":[{"title":"1.1.1.依赖注入","level":"1.3.1","depth":2,"path":"di.md","ref":"di.md","articles":[]}]},"previous":{"title":"介绍","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ChangeLog.md","mtime":"2021-04-04T04:07:11.650Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-04T05:08:26.602Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.1.1.依赖注入","level":"1.3.1","depth":2,"next":{"title":"1.2.http服务","level":"1.4","depth":1,"path":"http.md","ref":"http.md","articles":[{"title":"1.2.1.配置路由","level":"1.4.1","depth":2,"path":"http/route.md","ref":"http/route.md","articles":[]},{"title":"1.2.2.请求数据","level":"1.4.2","depth":2,"path":"http/request.md","ref":"http/request.md","articles":[]},{"title":"1.2.3.响应数据","level":"1.4.3","depth":2,"path":"http/response.md","ref":"http/response.md","articles":[]},{"title":"1.2.4.pprof","level":"1.4.4","depth":2,"path":"http/pprof.md","ref":"http/pprof.md","articles":[]},{"title":"1.2.5.swagger","level":"1.4.5","depth":2,"path":"http/swagger.md","ref":"http/swagger.md","articles":[]}]},"previous":{"title":"1.1.快速开始","level":"1.3","depth":1,"path":"start.md","ref":"start.md","articles":[{"title":"1.1.1.依赖注入","level":"1.3.1","depth":2,"path":"di.md","ref":"di.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"di.md","mtime":"2021-04-04T05:46:35.223Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-04T05:08:26.602Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

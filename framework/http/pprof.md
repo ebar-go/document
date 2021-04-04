@@ -3,7 +3,7 @@ golang性能分析神器-pprof。
 
 ## 配置
 ```
-server:
+http:
     pprof: on
 ```
 开启后访问 `{HOST}/debug/pprof`即可。
